@@ -1,17 +1,17 @@
 package cabbage;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Robot;
 
 import javax.swing.Timer;
 
-public class Dinosaur
+public class Dinosaur extends GameObject{
 	int speed;
-	Robot dino;
+	GameObject object;
 
-	Dinosaur() {
+	Dinosaur(int x, int y, int width, int height) {
+		super(x, y, width, height);
 		speed = 10;
-		dino = new Robot();
+		object = new GameObject(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -20,7 +20,7 @@ public class Dinosaur
 	}	
 	
 	public void draw(Graphics g) {
-		g.drawImage(GamePanel.dinoImg, x, y, null);
+		g.drawImage(GamePanel.dinoImg, x, y, width, height, null);
   	}
 	
 }

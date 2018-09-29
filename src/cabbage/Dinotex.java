@@ -1,5 +1,4 @@
 package cabbage;
-
 import java.awt.Dimension;
 import java.awt.event.KeyListener;
 
@@ -27,7 +26,7 @@ public class Dinotex {
 	}
 	
 	public static void main(String[] args) {
-		Dinotex lv1 = new Dinotex();
-		lv1.setup();
+		Dinotex dt1 = new Dinotex();
+		dt1.setup();
 	}
 }
