@@ -43,7 +43,8 @@ public class ObjectManager {
 	        if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
 	                addAlien(new Food(new Random().nextInt(Dinotex.Width), 0, 50, 50));
 
-	enemyTimer = System.currentTimeMillis();
+	enemyTimer = System.currentTimeMillis();     
+	
 	        }
 	}
 		

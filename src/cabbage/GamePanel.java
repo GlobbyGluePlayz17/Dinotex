@@ -30,7 +30,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
 	public static BufferedImage cloudImg;
 	public static BufferedImage dinoImg;
-	public static BufferedImage zooomdinoImg;
+	public static BufferedImage bgImg;
 	
 	GamePanel() {
 		timer1 = new Timer(1000/60, this);
@@ -47,7 +47,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
              dinoImg = ImageIO.read(this.getClass().getResourceAsStream("dinotexdino.png"));
              
-             zooomdinoImg = ImageIO.read(this.getClass().getResourceAsStream("zoomdinosayr.png"));
+             bgImg = ImageIO.read(this.getClass().getResourceAsStream("bg.jpg"));
              
              
      } catch (IOException e) {
@@ -150,9 +150,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		om.manageEnemies();
 		om.checkCollision();
 		om.purgeObjects();
-		if (dinosaur.isAlive == false) {
-			currentState = END_STATE;
-		}
+		System.out.println(om.score);
+	
 	}
 	
 	public void updateEndState() {
@@ -169,6 +168,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void drawGameState(Graphics g) {
+		g.drawImage(GamePanel.bgImg, 0, 0, 500, 800, null);
 		om.draw(g);
 	}
 	

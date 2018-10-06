@@ -1,22 +1,24 @@
 package cabbage;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
 public class Food extends GameObject {
-	int rand;
-	int speed;
-
+	int num = new Random().nextInt(500);
+	int newnum = num*20;
+	int num2 = new Random ().nextInt(800);
+	int newnum2 = num2*30;
+	
+	
 	Food(int x, int y, int width, int height) {
-		super(x, y, width, height);
+		super(newnum, newnum2, width, height);
 		// TODO Auto-generated constructor stub
-		rand = new Random().nextInt(500);
-		speed = 1;
+		
 	}
 	
 	public void update() {
 		super.update();
-		y+=speed;
 		//y = 750;
 		//System.out.println(rand);
 	}
