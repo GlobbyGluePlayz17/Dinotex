@@ -6,6 +6,7 @@ import java.util.Random;
 public class ObjectManager {
 	Dinosaur dinosaur;
 	ArrayList<Food> listFood;
+	ArrayList<Barrier> listBarrier;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
 	int score;
@@ -13,6 +14,7 @@ public class ObjectManager {
 	
 	ObjectManager(Dinosaur dinosaurket) {
 		dinosaur = dinosaurket;
+		listBarrier = new ArrayList<Barrier>();
 		listFood = new ArrayList<Food>();
 		score = 0;
 	}
@@ -21,22 +23,31 @@ public class ObjectManager {
 		for (int i = 0; i < listFood.size(); i++) {
 			listFood.get(i).update();
 		}
+		for (int i = 0; i < listBarrier.size(); i++) {
+			listBarrier.get(i).update();
+		}
 		dinosaur.update();
 	}
 	
 	public void draw(Graphics g) {
 		for (int i = 0; i < listFood.size(); i++) {
 			listFood.get(i).draw(g);
-			//System.out.println("asdf");
+		}
+		for (int i = 0; i < listBarrier.size(); i++) {
+			listBarrier.get(i).draw(g);
 		}
 		dinosaur.draw(g);
 		
+		System.out.println(listBarrier.size());
 		System.out.println(listFood.size());
 		System.out.println(score);
 	}
 	
 	public void addAlien(Food foodADDlist) {
 		listFood.add(foodADDlist);
+	}
+	public void addAlien(Barrier barrierADDlist) {
+		listBarrier.add(barrierADDlist);
 	}
 	
 		public void manageEnemies(){
