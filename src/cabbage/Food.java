@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Food extends GameObject {
-	int xx = 5;
-	int yy = 7;
-	ArrayList<Food> listFood;
+	int randx = 5;
+	int randy = 7;
 	
 	Food(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
-		
+		randx = new Random().nextInt(500);
+		randy = new Random().nextInt(800);
 	}
 	
 	public void update() {
@@ -23,6 +23,9 @@ public class Food extends GameObject {
 	}
 	
 	public void draw(Graphics g) {
-		g.drawImage(GamePanel.cloudImg, xx, yy, width, height, null);
+		for (int i = 0; i < 10; i++) {
+			x+=5;
+			g.drawImage(GamePanel.cloudImg, x*i, x*i, width, height, null);
+		}
 	}
 }

@@ -63,7 +63,7 @@ public class ObjectManager {
 			for (int i = 0; i < listFood.size(); i++) {
 				if (listFood.get(i).isAlive == false) {
 					listFood.remove(i);
-					//System.out.println("asdfasdf");
+					System.out.println("asdfasdf");
 				}
 			}
 	}
@@ -74,8 +74,10 @@ public class ObjectManager {
 				if (listFood.get(i).collisionBox.intersects(dinosaur.collisionBox)) {
 					listFood.get(i).isAlive = false;
 					score++;
+					System.out.println("asdfasdfasdf");
 			}
 		}
+			System.out.println("asdf");
 	}
 	
 	public void scoreGetter() {

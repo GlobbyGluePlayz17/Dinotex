@@ -1,33 +1,33 @@
 package cabbage;
 import java.awt.Color;
+
 import java.awt.Graphics;
 import java.util.Random;
 
 import javax.swing.Timer;
 
-public class Barrier extends GameObject{
-	int xx = new Random().nextInt(100);
-	int xxx = xx*5;
-	int yy = new Random().nextInt(80);
-	int yyy = yy*10;
-	int weed = new Random().nextInt(100);
-	int hit = new Random().nextInt(100);
-	int numofbarir = new Random().nextInt(10);
-	GameObject object;
+public class Barrier extends GameObject {
+	int randx;	
+	int randy;
+
 	
 	Barrier(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		object = new GameObject(x, y, width, height);
 		// TODO Auto-generated constructor stub
+		randx = new Random().nextInt(500);
+		randy = new Random().nextInt(800);
 	}
 	
 	public void update() {
 		super.update();
-	}	
+		//y = 750;
+		//System.out.println(rand);
+	}
 	
 	public void draw(Graphics g) {
-		g.setColor(Color.BLUE);
-		g.drawRect(xxx, yyy, weed, hit);
-  	}
-	
+		for (int i = 0; i < 10; i++) {
+			g.setColor(Color.BLUE);
+			g.drawRect(randx, randy, width, height);
+		}
+	}
 }
