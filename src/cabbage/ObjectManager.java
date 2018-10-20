@@ -84,4 +84,16 @@ public class ObjectManager {
 		this.score = score;
 		System.out.println(score);
 	}
+	
+	public void initalizeFood() {
+
+		for (int i = 0; i < listFood.size(); i++) {
+			for (int j = 0; j < 8; j++) {
+				listFood.add(new Food(listFood.get(i).x+=55, listFood.get(i).y, listFood.get(i).width, listFood.get(i).height));
+				for (int j2 = 0; j2 < 1; j2++) {
+					listFood.add(new Food(listFood.get(i).x+=55, listFood.get(i).y+=100, listFood.get(i).width, listFood.get(i).height));
+				}
+			}
+		}
+	}
 }

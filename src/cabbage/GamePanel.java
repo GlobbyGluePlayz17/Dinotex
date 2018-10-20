@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Font RegularFont;
 	Dinosaur dinosaur;
 	ObjectManager om;
+	Boolean setup;
 
 	public static BufferedImage cloudImg;
 	public static BufferedImage dinoImg;
@@ -40,6 +41,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		RegularFont = new Font("Comic Sans", Font.PLAIN, 20);
 		dinosaur = new Dinosaur(220, 700, 50, 50);
 		om = new ObjectManager(dinosaur);
+		setup = false;
 		
 		 try {
 
@@ -130,6 +132,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		System.out.println("set");
 	}
 	
+	
+	
 	@Override
 	public void paintComponent(Graphics g){
 		 if (currentState == MENU_STATE) {
@@ -165,9 +169,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawString("Dinotex", 95, 250);
 		g.setFont(SubFont);
 		g.drawString("Press ENTER to Play", 102, 400);
+		
+	}
+	
+	public void setUp() {
+		if (setup = true) {
+			om.initalizeFood();
+		}
 	}
 	
 	public void drawGameState(Graphics g) {
+		setup = true;
 		g.drawImage(GamePanel.bgImg, 0, 0, 500, 800, null);
 		om.draw(g);
 	}

@@ -6,15 +6,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Food extends GameObject {
-	int randx = 5;
-	int randy = 7;
+	int x;
+	int y;
+	int xspacing = 55;
+	int yspacing = 100;
 	
 	Food(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
-		randx = new Random().nextInt(500);
-		randy = new Random().nextInt(800);
+		this.x = 5;
+		this.y = 7;
 	}
+	
 	
 	public void update() {
 		super.update();
@@ -23,9 +26,10 @@ public class Food extends GameObject {
 	}
 	
 	public void draw(Graphics g) {
-		for (int i = 0; i < 10; i++) {
-			x+=5;
-			g.drawImage(GamePanel.cloudImg, x*i, x*i, width, height, null);
-		}
-	}
+			g.drawImage(GamePanel.cloudImg, x, y, width, height, null);
+			//System.out.println("drawing the food");
+			for (int i = 0; i < 1; i++) {
+				g.drawImage(GamePanel.cloudImg, x+xspacing*i, y, width, height, null);
+			}
+	}	
 }
