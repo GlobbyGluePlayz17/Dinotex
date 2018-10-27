@@ -22,6 +22,7 @@ public class Dinotex {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gp1.startGame();
+		gp1.SETUP();
 		frame.addKeyListener(gp1);
 	}
 	

@@ -139,6 +139,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		 if (currentState == MENU_STATE) {
 			 drawMenuState(g);
 		 } else if (currentState == GAME_STATE) {
+			if (setup == false) {
+				 om.initalizeFood();
+				 setup = true;
+			}
 			drawGameState(g);
 		 } else if (currentState == END_STATE) {
 			drawEndState(g);
@@ -151,7 +155,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	public void updateGameState() {
 		om.update();
-		om.manageEnemies();
+		//om.manageEnemies();
 		om.checkCollision();
 		om.purgeObjects();
 		System.out.println(om.score);
@@ -172,9 +176,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	
-	public void setUp() {
-		if (setup = true) {
-			om.initalizeFood();
+	public void SETUP() {
+		if (setup == true) {
+			
 		}
 	}
 	

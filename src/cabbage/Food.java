@@ -6,30 +6,23 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Food extends GameObject {
-	int x;
-	int y;
-	int xspacing = 55;
-	int yspacing = 100;
+	int rand;
+	static int width = 45;
+	static	int height = 45;
 	
-	Food(int x, int y, int width, int height) {
+	Food(int x, int y) {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
-		this.x = 5;
-		this.y = 7;
+		rand = new Random().nextInt(500);
+
 	}
-	
 	
 	public void update() {
 		super.update();
-		//y = 750;
-		//System.out.println(rand);
+		collisionBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g) {
-			g.drawImage(GamePanel.cloudImg, x, y, width, height, null);
-			//System.out.println("drawing the food");
-			for (int i = 0; i < 1; i++) {
-				g.drawImage(GamePanel.cloudImg, x+xspacing*i, y, width, height, null);
-			}
+			g.drawImage(GamePanel.cloudImg, x, rand, width, height, null);
 	}	
 }

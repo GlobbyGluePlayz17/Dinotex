@@ -10,6 +10,7 @@ public class ObjectManager {
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
 	int score;
+	Random rand;
 	
 	
 	ObjectManager(Dinosaur dinosaurket) {
@@ -17,6 +18,7 @@ public class ObjectManager {
 		listBarrier = new ArrayList<Barrier>();
 		listFood = new ArrayList<Food>();
 		score = 0;
+		rand = new Random();
 	}
 	
 	public void update() {
@@ -50,14 +52,14 @@ public class ObjectManager {
 		listBarrier.add(barrierADDlist);
 	}
 	
-		public void manageEnemies(){
-	        if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-	                addAlien(new Food(new Random().nextInt(Dinotex.Width), 0, 50, 50));
-
-	enemyTimer = System.currentTimeMillis();     
-	
-	        }
-	}
+//		public void manageEnemies(){
+//	        if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
+//	                addAlien(new Food(new Random().nextInt(Dinotex.Width), 0));
+//
+//	enemyTimer = System.currentTimeMillis();     
+//	
+//	        }
+//	}
 		
 	public void purgeObjects() {
 			for (int i = 0; i < listFood.size(); i++) {
@@ -86,14 +88,9 @@ public class ObjectManager {
 	}
 	
 	public void initalizeFood() {
-
-		for (int i = 0; i < listFood.size(); i++) {
-			for (int j = 0; j < 8; j++) {
-				listFood.add(new Food(listFood.get(i).x+=55, listFood.get(i).y, listFood.get(i).width, listFood.get(i).height));
-				for (int j2 = 0; j2 < 1; j2++) {
-					listFood.add(new Food(listFood.get(i).x+=55, listFood.get(i).y+=100, listFood.get(i).width, listFood.get(i).height));
-				}
-			}
+		
+		for (int i = 0; i < 100; i++) {
+			listFood.add(new Food(rand.nextInt(500), rand.nextInt(800)));
 		}
 	}
 }

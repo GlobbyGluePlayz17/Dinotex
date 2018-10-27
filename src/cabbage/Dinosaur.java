@@ -17,6 +17,7 @@ public class Dinosaur extends GameObject{
 	
 	public void update() {
 		super.update();
+		collisionBox.setBounds(x, y, width, height);
 	}	
 	
 	public void draw(Graphics g) {
