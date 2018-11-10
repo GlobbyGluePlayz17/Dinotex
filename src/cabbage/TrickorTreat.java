@@ -27,7 +27,7 @@ public class TrickorTreat {
 	}
 	
 	public static void main(String[] args) {
-		TrickorTreat dt1 = new TrickorTreat();
-		dt1.setup();
+		TrickorTreat tot1 = new TrickorTreat();
+		tot1.setup();
 	}
 }

@@ -6,15 +6,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Candy extends GameObject {
-	int rand;
-	static int width = 45;
-	static	int height = 45;
+	
 	
 	Candy(int x, int y) {
-		super(x, y, width, height);
+		super(x, new Random().nextInt(500), 25, 25);
 		// TODO Auto-generated constructor stub
-		rand = new Random().nextInt(500);
-
 	}
 	
 	public void update() {
@@ -23,6 +19,6 @@ public class Candy extends GameObject {
 	}
 	
 	public void draw(Graphics g) {
-			g.drawImage(GamePanel.candyImg, x, rand, width, height, null);
+			g.drawImage(GamePanel.candyImg, x, y, width, height, null);
 	}	
 }
