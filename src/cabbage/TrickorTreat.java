@@ -4,13 +4,13 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-public class Dinotex {
+public class TrickorTreat {
 	JFrame frame;
 	final static int Width = 500;
 	final static int Height = 800;
 	GamePanel gp1;
 	
-	Dinotex() {
+	TrickorTreat() {
 		frame = new JFrame();
 		gp1 = new GamePanel();
 	}
@@ -27,7 +27,7 @@ public class Dinotex {
 	}
 	
 	public static void main(String[] args) {
-		Dinotex dt1 = new Dinotex();
+		TrickorTreat dt1 = new TrickorTreat();
 		dt1.setup();
 	}
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager {
-	Dinosaur dinosaur;
-	ArrayList<Food> listFood;
+	Ghost dinosaur;
+	ArrayList<Candy> listFood;
 	ArrayList<Barrier> listBarrier;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
@@ -13,10 +13,10 @@ public class ObjectManager {
 	Random rand;
 	
 	
-	ObjectManager(Dinosaur dinosaurket) {
+	ObjectManager(Ghost dinosaurket) {
 		dinosaur = dinosaurket;
 		listBarrier = new ArrayList<Barrier>();
-		listFood = new ArrayList<Food>();
+		listFood = new ArrayList<Candy>();
 		score = 0;
 		rand = new Random();
 	}
@@ -45,7 +45,7 @@ public class ObjectManager {
 		System.out.println(score);
 	}
 	
-	public void addAlien(Food foodADDlist) {
+	public void addAlien(Candy foodADDlist) {
 		listFood.add(foodADDlist);
 	}
 	public void addAlien(Barrier barrierADDlist) {
@@ -90,7 +90,7 @@ public class ObjectManager {
 	public void initalizeFood() {
 		
 		for (int i = 0; i < 100; i++) {
-			listFood.add(new Food(rand.nextInt(500), rand.nextInt(800)));
+			listFood.add(new Candy(rand.nextInt(500), rand.nextInt(800)));
 		}
 	}
 }

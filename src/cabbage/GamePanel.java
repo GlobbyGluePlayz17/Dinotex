@@ -25,12 +25,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Font	 GameOverFont;
 	Font SubFont;
 	Font RegularFont;
-	Dinosaur dinosaur;
+	Ghost dinosaur;
 	ObjectManager om;
 	Boolean setup;
 
-	public static BufferedImage cloudImg;
-	public static BufferedImage dinoImg;
+	public static BufferedImage candyImg;
+	public static BufferedImage ghostImg;
 	public static BufferedImage bgImg;
 	
 	GamePanel() {
@@ -39,15 +39,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		GameOverFont = new Font("Comic Sans", Font.PLAIN, 48);
 		SubFont = new Font("Comic Sans", Font.PLAIN, 30);
 		RegularFont = new Font("Comic Sans", Font.PLAIN, 20);
-		dinosaur = new Dinosaur(220, 700, 50, 50);
+		dinosaur = new Ghost(220, 700, 50, 50);
 		om = new ObjectManager(dinosaur);
 		setup = false;
 		
 		 try {
 
-             cloudImg = ImageIO.read(this.getClass().getResourceAsStream("cloud.png"));
+             candyImg = ImageIO.read(this.getClass().getResourceAsStream("candyforgame.png"));
 
-             dinoImg = ImageIO.read(this.getClass().getResourceAsStream("dinotexdino.png"));
+             ghostImg = ImageIO.read(this.getClass().getResourceAsStream("ghosttrickortreat.png"));
              
              bgImg = ImageIO.read(this.getClass().getResourceAsStream("bg.jpg"));
              
@@ -94,7 +94,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			} else if (currentState == 1) {
 				currentState = 2;
 			} else if (currentState == 2) {
-				dinosaur = new Dinosaur(220, 700, 50, 50);
+				dinosaur = new Ghost(220, 700, 50, 50);
 				om = new ObjectManager(dinosaur);
 				currentState = 0;
 			} 
@@ -167,10 +167,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void drawMenuState(Graphics g) {
-		g.drawImage(GamePanel.dinoImg, 1, 105, 500, 500, null);
+		g.drawImage(GamePanel.ghostImg, 1, 105, 500, 500, null);
 		g.setColor(Color.BLACK);
 		g.setFont(titleFont);
-		g.drawString("Dinotex", 95, 250);
+		g.drawString("Trick or Treat!", 95, 250);
 		g.setFont(SubFont);
 		g.drawString("Press ENTER to Play", 102, 400);
 		
@@ -189,13 +189,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	public void drawEndState(Graphics g) {
-		g.drawImage(GamePanel.dinoImg, 1, 105, 500, 500, null);
+		g.drawImage(GamePanel.ghostImg, 1, 105, 500, 500, null);
 		g.setColor(Color.BLACK);
 		g.setFont(titleFont);
 		g.drawString("Game Over", 47, 200);
 		g.setFont(SubFont);
 		g.drawString("Press ENTER to Reset", 93, 300);
 		g.setFont(RegularFont);
-		g.drawString("You ate "+ om.score + " cloud(s). \n Better luck next time!", 45, 500);
+		g.drawString("You collected 50 candy in " + om.score + " seconds. \n Try to beat you score!", 45, 500);
 	}
 }
