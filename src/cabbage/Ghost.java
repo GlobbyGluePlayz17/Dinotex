@@ -12,7 +12,7 @@ public class Ghost extends GameObject{
 
 	Ghost(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 10;
+		speed = 20;
 		object = new GameObject(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}

@@ -22,7 +22,7 @@ public class TrickorTreat {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gp1.startGame();
-		gp1.SETUP();
+		//gp1.SETUP();
 		frame.addKeyListener(gp1);
 	}
 	

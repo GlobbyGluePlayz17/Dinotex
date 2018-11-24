@@ -9,13 +9,13 @@ public class Candy extends GameObject {
 	
 	
 	Candy(int x, int y) {
-		super(x, new Random().nextInt(500), 25, 25);
+		super(x, new Random().nextInt(800), 25, 25);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void update() {
 		super.update();
-		collisionBox.setBounds(x, y, width, height);
+		collisionBox.setBounds(x, y, 100, 100);
 	}
 	
 	public void draw(Graphics g) {

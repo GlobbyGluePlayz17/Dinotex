@@ -16,8 +16,11 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Timer timer1;
-	long gametimer;
-	Timer gametimer2;
+	long enemyTimer;
+	int enemySpawnTime;
+	long totalTime;
+	long elapsedTime;
+	long beginningTime;
 	
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
@@ -40,8 +43,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	GamePanel() {
 		timer1 = new Timer(1000/60, this);
-		gametimer = 0;
-		gametimer2 = new Timer(1/60, this);
+		enemyTimer = 0;
+		enemySpawnTime = 1000;
+		beginningTime = System.currentTimeMillis();
 		
 		titleFont = new Font("Comic Sans", Font.PLAIN, 80);
 		titleFont2 = new Font("Comic Sans", Font.PLAIN, 65);
@@ -49,7 +53,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		SubFont = new Font("Comic Sans", Font.PLAIN, 30);
 		RegularFont = new Font("Comic Sans", Font.PLAIN, 20);
 		
-		ghost = new Ghost(250, 700, 50, 50);
+		ghost = new Ghost(200, 650, 50, 50);
 		om = new ObjectManager(ghost);
 		setup = false;
 		
@@ -107,6 +111,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				ghost = new Ghost(220, 700, 50, 50);
 				om = new ObjectManager(ghost);
 				currentState = 0;
+				beginningTime = System.currentTimeMillis();
+				om.draw(g);
 			} 
 		}
 			System.out.println(currentState);
@@ -168,12 +174,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//om.manageEnemies();
 		om.checkCollision();
 		om.purgeObjects();
+		gameTimer();
 		System.out.println(om.score);
 	
 	}
 	
 	public void updateEndState() {
-		
+	
 	}
 	
 	public void drawMenuState(Graphics g) {
@@ -190,17 +197,29 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	
-	public void SETUP() {
-		if (setup == true) {
-			
-		}
+//	public void SETUP() {
+//		if (setup == true) {
+//			om.initalizeFood();
+//			setup = false;
+//		}
+//	}
+	
+	public void gameTimer() {
+        elapsedTime = System.currentTimeMillis() - beginningTime;
+        totalTime = elapsedTime/1000;
 	}
 	
+
 	public void drawGameState(Graphics g) {
 		setup = true;
+		//System.out.println();
 		g.setColor(Color.BLACK);
 		g.drawRect(0, 0, 500, 800);
 		om.draw(g);
+		if (om.score == 100) {
+			currentState = 2;
+		}
+		
 	}
 	
 	public void drawEndState(Graphics g) {
@@ -211,13 +230,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setFont(SubFont);
 		g.drawString("Press ENTER to Reset", 93, 550);
 		g.setFont(RegularFont);
-		g.drawString("You collected " + om.score + " candy in " + " seconds.", 90, 600);
+		g.drawString("You collected " + om.score + " candy in " + totalTime + " seconds.", 90, 600);
 		g.drawString("Now try to beat your score!", 117, 630);
 	}
 	
-	public void GameTimer() {
-		if (System.currentTimeMillis() - gametimer = gametimer2) {
-			
-		}
-	}
 }

@@ -52,9 +52,9 @@ public class ObjectManager {
 		listBarrier.add(barrierADDlist);
 	}
 	
-//		public void manageEnemies(){
+//	public void manageEnemies(){
 //	        if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-//	                addAlien(new Food(new Random().nextInt(Dinotex.Width), 0));
+//	                addAlien(new Candy(new Random().nextInt(TrickorTreat.Width), 0));
 //
 //	enemyTimer = System.currentTimeMillis();     
 //	
