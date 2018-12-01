@@ -21,8 +21,7 @@ public class GameObject {
 	}
 	
 	public void update() {
-		//collisionBox.setBounds(x, y, width, height);
-		//System.out.println("al;skdjf;alksdjf");
+		collisionBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g) {

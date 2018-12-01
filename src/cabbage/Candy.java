@@ -15,10 +15,11 @@ public class Candy extends GameObject {
 	
 	public void update() {
 		super.update();
-		collisionBox.setBounds(x, y, 100, 100);
+		collisionBox.setBounds(x, y, width, height);
 	}
 	
 	public void draw(Graphics g) {
 			g.drawImage(GamePanel.candyImg, x, y, width, height, null);
+			g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 	}	
 }

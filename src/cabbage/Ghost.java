@@ -6,24 +6,24 @@ import javax.swing.Timer;
 
 public class Ghost extends GameObject{
 	int speed;
-	int width = 100;
-	int height = 100;
-	GameObject object;
+	int width = 70;
+	int height = 70;
 
 	Ghost(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		speed = 20;
-		object = new GameObject(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void update() {
 		super.update();
-		collisionBox.setBounds(x, y, 100, 100);
+		collisionBox.setBounds(x+20, y+20, width-40, height-40);
+		//System.out.println("collision" + collisionBox.x + collisionBox.y);
 	}	
 	
 	public void draw(Graphics g) {
-		g.drawImage(GamePanel.ghostImg, x, y, 100, 100, null);
+		g.drawImage(GamePanel.ghostImg, x, y, width, height, null);
+		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
   	}
 	
 }

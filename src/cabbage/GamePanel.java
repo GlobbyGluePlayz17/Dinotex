@@ -63,7 +63,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
              ghostImg = ImageIO.read(this.getClass().getResourceAsStream("ghosttrickortreat.png"));
              
-             bgImg = ImageIO.read(this.getClass().getResourceAsStream("bg.jpg"));
+             bgImg = ImageIO.read(this.getClass().getResourceAsStream("bg.png"));
              
              
      } catch (IOException e) {
@@ -110,9 +110,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			} else if (currentState == 2) {
 				ghost = new Ghost(220, 700, 50, 50);
 				om = new ObjectManager(ghost);
-				currentState = 0;
 				beginningTime = System.currentTimeMillis();
-				om.draw(g);
+				setup = false;
+				currentState = 0;
+				//om.draw(g);
 			} 
 		}
 			System.out.println(currentState);
@@ -211,10 +212,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 
 	public void drawGameState(Graphics g) {
-		setup = true;
-		//System.out.println();
-		g.setColor(Color.BLACK);
-		g.drawRect(0, 0, 500, 800);
+		setup = true; 
+		g.setColor(Color.RED);
+		//g.fillRect(0, 0, 500, 800);
+		g.drawImage(bgImg, 0, 0, 500, 800, null);
+		g.setFont(RegularFont);
+		g.drawString("Candy Count: " + om.score, 10, 30);
+		g.drawString("Time: " + totalTime, 410, 30);
 		om.draw(g);
 		if (om.score == 100) {
 			currentState = 2;
@@ -230,7 +234,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.setFont(SubFont);
 		g.drawString("Press ENTER to Reset", 93, 550);
 		g.setFont(RegularFont);
-		g.drawString("You collected " + om.score + " candy in " + totalTime + " seconds.", 90, 600);
+		g.drawString("You collected " + om.score + " candy in " + totalTime + " seconds.", 75, 600);
 		g.drawString("Now try to beat your score!", 117, 630);
 	}
 	
