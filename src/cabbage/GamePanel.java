@@ -21,6 +21,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	long totalTime;
 	long elapsedTime;
 	long beginningTime;
+	long pastscore;
 	
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
@@ -36,6 +37,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	Ghost ghost;
 	ObjectManager om;
 	Boolean setup;
+	Boolean moveup;
+	Boolean movedown;
+	Boolean moveleft;
+	Boolean moveright;
 
 	public static BufferedImage candyImg;
 	public static BufferedImage ghostImg;
@@ -56,6 +61,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		ghost = new Ghost(200, 650, 50, 50);
 		om = new ObjectManager(ghost);
 		setup = false;
+		moveup = false;
+		movedown = false;
+		moveleft = false;
+		moveright = false;
 		
 		 try {
 
@@ -82,6 +91,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		MOVE();
+		
 		repaint();
 		 if (currentState == MENU_STATE) {
 			 updateMenuState();
@@ -101,6 +112,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
 		System.out.println("tesser");
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 			if (currentState == 0) {
@@ -116,37 +128,45 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 				//om.draw(g);
 			} 
 		}
-			System.out.println(currentState);
 		
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			moveup = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			movedown = true;
+		}
 		if (e.getKeyCode()== KeyEvent.VK_LEFT) {
-			ghost.x-=ghost.speed;
-			System.out.println("left");
-		} else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			ghost.x+=ghost.speed;
-		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-			ghost.y-=ghost.speed;
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-			ghost.y+=ghost.speed;
-		} else if (e.getKeyCode() == KeyEvent.VK_UP + KeyEvent.VK_LEFT) {
-			ghost.x-=ghost.speed;
-			ghost.y-=ghost.speed;
-		} else if (e.getKeyCode() == KeyEvent.VK_UP + KeyEvent.VK_RIGHT) {
-			ghost.x+=ghost.speed;
-			ghost.y-=ghost.speed;
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN + KeyEvent.VK_LEFT) {
-			ghost.x-=ghost.speed;
-			ghost.y+=ghost.speed;
-		} else if (e.getKeyCode() == KeyEvent.VK_DOWN + KeyEvent.VK_RIGHT) {
-			ghost.x+=ghost.speed;
-			ghost.y+=ghost.speed;
-		} 
+			moveleft = true;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			moveright = true;
+		}
+			
+//			} else if (e.getKeyCode() == KeyEvent.VK_UP + KeyEvent.VK_LEFT) {
+//				ghost.x-=ghost.speed;
+//				ghost.y-=ghost.speed;
+//			} else if (e.getKeyCode() == KeyEvent.VK_UP + KeyEvent.VK_RIGHT) {
+//				ghost.x+=ghost.speed;
+//				ghost.y-=ghost.speed;
+//			} else if (e.getKeyCode() == KeyEvent.VK_DOWN + KeyEvent.VK_LEFT) {
+//				ghost.x-=ghost.speed;
+//				ghost.y+=ghost.speed;
+//			} else if (e.getKeyCode() == KeyEvent.VK_DOWN + KeyEvent.VK_RIGHT) {
+//				ghost.x+=ghost.speed;
+//				ghost.y+=ghost.speed;
+//			}
 		
+			System.out.println(currentState);
 	}
-
+	
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("set");
+		moveup = false;
+		movedown = false;
+		moveleft = false;
+		moveright = false;
 	}
 	
 	
@@ -191,7 +211,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawString("Trick or Treat!", 35, 185);
 		g.setFont(RegularFont);
 		g.drawString("Help the ghost to collect as much candy", 54, 550);
-		g.drawString("as possible before time runs out!", 84, 585);
+		g.drawString("as possible in the least amount of time!", 84, 585);
 		g.drawString("Use arrow keys to move.", 138, 635);
 		g.setFont(SubFont);
 		g.drawString("Press ENTER to Play", 102, 720);
@@ -205,9 +225,22 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 //		}
 //	}
 	
+	public void MOVE() {
+		if (moveup == true) {
+			ghost.y-=ghost.speed;
+		} else if (movedown == true) {
+			ghost.y+=ghost.speed;
+		} else if (moveleft == true) {
+			ghost.x-=ghost.speed;
+		} else if (moveright == true) {
+			ghost.x+=ghost.speed;
+		}
+	}
+	
 	public void gameTimer() {
         elapsedTime = System.currentTimeMillis() - beginningTime;
         totalTime = elapsedTime/1000;
+  
 	}
 	
 
@@ -218,7 +251,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.drawImage(bgImg, 0, 0, 500, 800, null);
 		g.setFont(RegularFont);
 		g.drawString("Candy Count: " + om.score, 10, 30);
-		g.drawString("Time: " + totalTime, 410, 30);
+		g.drawString("Time: " + totalTime, 395, 30);
 		om.draw(g);
 		if (om.score == 100) {
 			currentState = 2;

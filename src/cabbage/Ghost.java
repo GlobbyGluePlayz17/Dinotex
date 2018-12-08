@@ -11,7 +11,7 @@ public class Ghost extends GameObject{
 
 	Ghost(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		speed = 20;
+		speed = 3;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -23,7 +23,7 @@ public class Ghost extends GameObject{
 	
 	public void draw(Graphics g) {
 		g.drawImage(GamePanel.ghostImg, x, y, width, height, null);
-		g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
+		//g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
   	}
 	
 }

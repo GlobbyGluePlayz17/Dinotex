@@ -9,7 +9,7 @@ public class Candy extends GameObject {
 	
 	
 	Candy(int x, int y) {
-		super(x, new Random().nextInt(800), 25, 25);
+		super(new Random().nextInt(499-1) + 1, new Random().nextInt(790-30) + 30, 25, 25);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -20,6 +20,6 @@ public class Candy extends GameObject {
 	
 	public void draw(Graphics g) {
 			g.drawImage(GamePanel.candyImg, x, y, width, height, null);
-			g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
+			//g.drawRect(collisionBox.x, collisionBox.y, collisionBox.width, collisionBox.height);
 	}	
 }
